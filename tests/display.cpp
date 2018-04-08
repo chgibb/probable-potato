@@ -6,7 +6,9 @@
 #include "../src/PBP/display.hpp"
 
 TEST_CASE( "Should init properly", "" ) {
+    REQUIRE(PBP::init() == 0);
     REQUIRE(PBP::initDisplay(640,480) == 0);
+    REQUIRE(PBP::display != NULL);
 }
 
 int main(int argc,char*argv[])

@@ -5,5 +5,7 @@ namespace PBP
 {
     extern ALLEGRO_DISPLAY*display;
 
+    int init();
     int initDisplay(int,int);
+    void destroyDisplay();
 }
