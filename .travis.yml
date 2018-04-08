@@ -1,0 +1,11 @@
+language: cpp
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - liballegro5-dev
+
+script:
+  - bash scripts/test.bash
