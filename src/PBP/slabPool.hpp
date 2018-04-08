@@ -29,7 +29,7 @@ namespace PBP
                 return false;
             }
 
-            template<class CallBack>
+            template<class CallBack = void(*)(PBP::PooledObject<Obj>&,bool&)>
             void forEach(CallBack cb)
             {
                 bool abort = false;
