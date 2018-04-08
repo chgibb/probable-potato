@@ -5,7 +5,7 @@
 
 #include "../src/PBP/slabPool.hpp"
 
-TEST_CASE( "Should allocate properly", "" ) {
+TEST_CASE("Should allocate properly","") {
     PBP::SlabPool<int> pool;
     
     //first allocation should be back of storage
