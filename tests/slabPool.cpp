@@ -13,6 +13,8 @@ TEST_CASE("Should allocate properly","") {
     REQUIRE(pool.cache.back().obj == 1);
 
     pool.add(2);
+    REQUIRE(pool.cache.back().obj == 2);
+    REQUIRE(pool.cache.size() == 2);
 
     //first two allocations should be accessed on first two iterations
     int iteration = 0;
@@ -34,8 +36,14 @@ TEST_CASE("Should allocate properly","") {
     iteration = 0;
 
     pool.add(3);
+    REQUIRE(pool.cache.back().obj == 3);
+    REQUIRE(pool.cache.size() == 3);
     pool.add(4);
+    REQUIRE(pool.cache.back().obj == 4);
+    REQUIRE(pool.cache.size() == 4);
     pool.add(5);
+    REQUIRE(pool.cache.back().obj == 5);
+    REQUIRE(pool.cache.size() == 5);
 
     //likewise when adding 3three more
     pool.forEach([&](PBP::PooledObject<int>&obj,bool&abort) -> bool {
@@ -85,6 +93,9 @@ TEST_CASE("should delete and maintain ordering","") {
     });
     REQUIRE(iteration == 3);
 
+    REQUIRE(pool.cache.back().obj == 5);
+    REQUIRE(pool.cache.size() == 5);
+
     iteration = 0;
     //everything after 3 should appear shifted down
     pool.forEach([&](PBP::PooledObject<int>&obj,bool&abort) -> bool {
@@ -109,6 +120,9 @@ TEST_CASE("should delete and maintain ordering","") {
         return false;
     });
     REQUIRE(iteration == 4);
+
+    REQUIRE(pool.cache.back().obj == 5);
+    REQUIRE(pool.cache.size() == 5);
 }
 
 TEST_CASE("should insert and fill hole","") {
@@ -140,6 +154,9 @@ TEST_CASE("should insert and fill hole","") {
         return false;
     });
     REQUIRE(iteration == 5);
+
+    REQUIRE(pool.cache.back().obj == 5);
+    REQUIRE(pool.cache.size() == 5);
 }
 
 int main(int argc,char*argv[])
