@@ -37,7 +37,7 @@ namespace PBP
             }
 
             template<class CallBack = void(*)(PBP::PooledObject<Obj>&,bool&)>
-            void forEach(CallBack cb)
+            void forEach(CallBack&&cb)
             {
                 bool abort = false;
                 auto end = this->cache.end();
