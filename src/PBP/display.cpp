@@ -13,6 +13,7 @@ namespace PBP
 
     int initDisplay(int w,int h)
     {
+        al_set_new_display_flags(ALLEGRO_WINDOWED);
         PBP::display = al_create_display(w,h);
         if(!display)
             return 1;
