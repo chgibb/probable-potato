@@ -1,6 +1,6 @@
 install:
 
-build_script:
+build: off
 
 test_script:
   - bash scripts/test.bash
