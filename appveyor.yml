@@ -3,4 +3,5 @@ install:
 build: off
 
 test_script:
+  - set path=%path%;C:\mingw\bin
   - bash scripts/test.bash
